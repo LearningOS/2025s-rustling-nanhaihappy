@@ -7,8 +7,6 @@
 // Execute `rustlings hint traits5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 pub trait SomeTrait {
     fn some_function(&self) -> bool {
         true
@@ -29,9 +27,10 @@ impl OtherTrait for SomeStruct {}
 impl SomeTrait for OtherStruct {}
 impl OtherTrait for OtherStruct {}
 
-// YOU MAY ONLY CHANGE THE NEXT LINE
-fn some_func(item: ??) -> bool {
-    item.some_function() && item.other_function()
+// This function should take two arguments of type `impl SomeTrait`
+// and `impl OtherTrait` and return true if their licensing information is the same.
+fn some_func<T: SomeTrait + OtherTrait>(a: T) -> bool {
+    a.some_function() && a.other_function()
 }
 
 fn main() {
